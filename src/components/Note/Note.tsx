@@ -1,16 +1,23 @@
-import React from 'react'
-import {MdDeleteForever} from 'react-icons/md'
+import React from "react";
+import { MdDeleteForever } from "react-icons/md";
 
-function Note() {
+type NoteProps = {
+  id: string;
+  text: string;
+  date: Date;
+  deleteNote: (id: string) => void;
+};
+
+function Note({ id, date, text, deleteNote }: NoteProps) {
   return (
-    <div className='note'>
-        <span>First note</span>
-        <div className='note-footer'>
-            <small>09/10/2023</small>
-            <MdDeleteForever className='delete-icon' size='1.3em'/>
-        </div>
+    <div className="note">
+      <span>{text}</span>
+      <div className="note-footer">
+        <small>{date.toLocaleDateString()}</small>
+        <MdDeleteForever onClick={() => deleteNote(id)} className="delete-icon" size="1.3em" />
+      </div>
     </div>
-  )
+  );
 }
 
-export default Note
+export default Note;
