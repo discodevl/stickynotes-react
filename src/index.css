@@ -19,6 +19,16 @@ body {
   color: black;
 }
 
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title{
+  color: white;
+}
+
 .container {
   max-width: 960px;
   margin-right: auto;

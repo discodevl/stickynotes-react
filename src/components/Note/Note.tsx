@@ -13,7 +13,7 @@ function Note({ id, date, text, deleteNote }: NoteProps) {
     <div className="note">
       <span>{text}</span>
       <div className="note-footer">
-        <small>{date.toLocaleDateString()}</small>
+        <small>{date.toString()}</small>
         <MdDeleteForever onClick={() => deleteNote(id)} className="delete-icon" size="1.3em" />
       </div>
     </div>
