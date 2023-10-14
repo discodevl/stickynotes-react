@@ -1,9 +1,10 @@
+import { nanoid } from "nanoid";
 import { useState } from "react";
 import NotesList from "./components/NotesList/NotesList";
+import Search from "./components/Search/Search";
 import { TNote } from "./types/types";
-import { nanoid } from "nanoid";
 
-//56:15
+//1:05:58
 //https://www.youtube.com/watch?v=8KB3DHI-QbM
 
 function App() {
@@ -20,26 +21,29 @@ function App() {
     },
   ]);
 
-  function addNote(text:string) {
+  const [search, setSearch] = useState();
+
+  function addNote(text: string) {
     console.log(text);
     const date = new Date();
-    const newNote:TNote = {
+    const newNote: TNote = {
       id: nanoid(),
       text: text,
       date: date,
-    }
-    const newNotes:TNote[] = [...notes, newNote];
+    };
+    const newNotes: TNote[] = [...notes, newNote];
     setNotes(newNotes);
   }
 
-  function deleteNote(id:string) {
-    const filtredNotes = notes.filter(note => note.id !== id);
+  function deleteNote(id: string) {
+    const filtredNotes = notes.filter((note) => note.id !== id);
     setNotes(filtredNotes);
   }
 
   return (
     <div className="container">
-      <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote}/>
+      <Search searchNote={setSearch} />
+      <NotesList notes={notes} addNote={addNote} deleteNote={deleteNote} />
     </div>
   );
 }
