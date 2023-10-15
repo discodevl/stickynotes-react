@@ -27,14 +27,14 @@ function App() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const data = localStorage.getItem(KEY_NOTE);
-    const savedNotes = JSON.parse(data || "");
-    console.log({savedNotes})
-    if (savedNotes) setNotes(savedNotes);
+    const savedNotes = JSON.parse(localStorage.getItem(KEY_NOTE) || "");
+
+    if (savedNotes.length > 0) {
+      setNotes(savedNotes);
+    }
   }, []);
 
   useEffect(() => {
-    console.log('save')
     localStorage.setItem(KEY_NOTE, JSON.stringify(notes));
   }, [notes]);
 
